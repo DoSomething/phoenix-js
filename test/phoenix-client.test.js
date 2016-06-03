@@ -50,17 +50,6 @@ describe('PhoenixClient', () => {
 
 
   describe('User', () => {
-    /**
-     * Helper: validate unauthorized user object.
-     */
-    function memberCountResponse(data) {
-      // Ensure result to be an instance of Response?
-      data.should.be.an.instanceof(Object);
-
-      // Ensure properties and test values.
-      data.should.have.properties(['formatted', 'readable']);
-    }
-
     // Check getUser method.
     it('should be exposed', () => {
       getUnauthorizedClient()
@@ -68,11 +57,17 @@ describe('PhoenixClient', () => {
         .which.is.instanceof(PhoenixEndpointUser);
     });
 
-    // By id.
+    // Get member count.
     it('getCount() should return correct member count', () => {
       const client = getUnauthorizedClient();
       const response = client.User.getCount();
-      return response.should.eventually.match(memberCountResponse);
+      return response.should.eventually.match((data) => {
+        // Ensure result to be an instance of Response?
+        data.should.be.an.instanceof(Object);
+
+        // Ensure properties and test values.
+        data.should.have.properties(['formatted', 'readable']);
+      });
     });
   });
 });
