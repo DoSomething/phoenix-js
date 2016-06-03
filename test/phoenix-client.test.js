@@ -1,10 +1,15 @@
 'use strict';
 
 /**
- * PhoenixClient.test
+ * Includes.
  */
 require('dotenv').config({ silent: true });
 const PhoenixClient = require('../lib/phoenix-client');
+const PhoenixEndpointUser = require('../lib/phoenix-endpoint-user');
+
+/**
+ * PhoenixClient.test
+ */
 
 /**
  * Test Phoenix Nodejs client.
@@ -44,7 +49,7 @@ describe('PhoenixClient', () => {
   });
 
 
-  describe('getMemberCount()', () => {
+  describe('User', () => {
     /**
      * Helper: validate unauthorized user object.
      */
@@ -57,15 +62,16 @@ describe('PhoenixClient', () => {
     }
 
     // Check getUser method.
-    it('getMemberCount() should be exposed', () => {
-      // property('getMemberCount').that.is.a.Function?
-      getUnauthorizedClient().getMemberCount.should.be.a.Function();
+    it('should be exposed', () => {
+      getUnauthorizedClient()
+        .should.have.property('User')
+        .which.is.instanceof(PhoenixEndpointUser);
     });
 
     // By id.
-    it('should return correct member count', () => {
+    it('getCount() should return correct member count', () => {
       const client = getUnauthorizedClient();
-      const response = client.getMemberCount();
+      const response = client.User.getCount();
       return response.should.eventually.match(memberCountResponse);
     });
   });
