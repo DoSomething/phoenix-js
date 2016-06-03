@@ -40,4 +40,31 @@ describe('PhoenixClient', () => {
       // client.should.have.property('apiKey').which.is.empty();
     });
   });
+
+
+  describe.skip('getMemberCount()', () => {
+    /**
+     * Helper: validate unauthorized user object.
+     */
+    function memberCountResponse(data) {
+      // Ensure result to be an instance of Response?
+      data.should.be.an.instanceof(Object);
+
+      // Ensure properties and test values.
+      data.should.have.properties(['formatted', 'readable']);
+    }
+
+    // Check getUser method.
+    it('getMemberCount() should be exposed', () => {
+      // property('getMemberCount').that.is.a.Function?
+      getUnauthorizedClient().getMemberCount.should.be.a.Function();
+    });
+
+    // By id.
+    it('should return correct member count', () => {
+      const client = getUnauthorizedClient();
+      const response = client.getMemberCount();
+      return response.should.eventually.match(memberCountResponse);
+    });
+  });
 });
