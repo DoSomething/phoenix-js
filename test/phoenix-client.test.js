@@ -1,13 +1,13 @@
 'use strict';
 
 /**
- * NorthstarClient.test
+ * PhoenixClient.test
  */
 require('dotenv').config({ silent: true });
 const PhoenixClient = require('../lib/phoenix-client');
 
 /**
- * Test Northstar Nodejs client.
+ * Test Phoenix Nodejs client.
  */
 describe('PhoenixClient', () => {
   /**
@@ -35,14 +35,16 @@ describe('PhoenixClient', () => {
     it('should create new instance configured correctly', () => {
       const client = getUnauthorizedClient();
       client.should.be.an.instanceof(PhoenixClient);
-      client.should.have.property('baseURI').which.is.not.empty();
+      client.should.have.property('baseURI')
+        .which.is.not.empty()
+        .and.equal(process.env.PHOENIX_REST_API_BASEURI);
       // TODO: check if authentication token isn't set.
       // client.should.have.property('apiKey').which.is.empty();
     });
   });
 
 
-  describe.skip('getMemberCount()', () => {
+  describe('getMemberCount()', () => {
     /**
      * Helper: validate unauthorized user object.
      */

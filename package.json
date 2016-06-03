@@ -1,7 +1,7 @@
 {
   "name": "@dosomething/phoenix-js",
   "version": "0.0.0",
-  "description": "Javascript client for Northstar, the DoSomething.org user API.",
+  "description": "Javascript client for Phoenix, the DoSomething.org user API.",
   "engines": {
     "node": ">=4.4.x"
   },
