@@ -1,0 +1,34 @@
+{
+  "name": "@dosomething/phoenix-js",
+  "version": "0.0.0",
+  "description": "Javascript client for Northstar, the DoSomething.org user API.",
+  "engines": {
+    "node": ">=4.4.x"
+  },
+  "main": "./lib/phoenix-client",
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "eslint test/*.js lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoSomething/phoenix-js.git"
+  },
+  "author": "Sergii Tkachenko <hi@sergii.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DoSomething/phoenix-js/issues"
+  },
+  "homepage": "https://github.com/DoSomething/phoenix-js#readme",
+  "devDependencies": {
+    "@dosomething/eslint-config": "^1.1.1",
+    "eslint": "^2.10.2",
+    "eslint-plugin-react": "^5.1.1",
+    "mocha": "^2.5.2",
+    "dotenv": "^2.0.0",
+    "should": "^8.4.0"
+  },
+  "dependencies": {
+    "superagent": "^2.0.0"
+  }
+}
