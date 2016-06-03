@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Includes.
+ * Imports.
  */
 require('dotenv').config({ silent: true });
 const PhoenixClient = require('../lib/phoenix-client');
