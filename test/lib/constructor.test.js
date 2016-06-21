@@ -3,7 +3,7 @@
 /**
  * Imports.
  */
-const helper = require('../helpers/test-helper.js');
+const helper = require('../helpers/test-helper');
 const PhoenixClient = require('../../lib/phoenix-client');
 
 /**
