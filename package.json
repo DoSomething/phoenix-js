@@ -8,7 +8,7 @@
   "main": "./lib/phoenix-client",
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "eslint test/*.js lib/*.js"
+    "lint": "eslint --ext=.js test/ lib/"
   },
   "repository": {
     "type": "git",
