@@ -16,27 +16,27 @@ describe('PhoenixClient constructor', () => {
   });
 
   // Test new anonymous instance.
-  it.skip('should create correct unauthorized client', () => {
+  it('should create correct unauthorized client', () => {
     const client = helper.getUnauthorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
     client.should.have.property('baseURI')
       .which.is.not.empty()
       .and.is.equal(process.env.PHOENIX_REST_API_BASEURI);
-    client.should.have.property('isAuthorized').which.is.empty();
+    return client.session.should.eventually.be.false();
   });
 
   // Test authorized instance.
-  it.skip('should create correct authorized client', () => {
+  it('should create correct authorized client', () => {
     const client = helper.getAuthrorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
-    client.should.have.property('isAuthorized').which.is.true();
+    client.should.have.property('session');
+    return client.session.should.eventually.match(helper.validSessionToken);
   });
 
   // Test authorized instance sustains connection.
   it.skip('should sustain authorized connection', () => {
     const client = helper.getAuthrorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
-    client.should.have.property('isAuthorized').which.is.true();
     client.should.have.property('getConnectionStatus').which.is.a.Function();
 
     // Check that created client can perform authorized calls.

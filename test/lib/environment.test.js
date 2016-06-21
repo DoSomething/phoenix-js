@@ -15,8 +15,8 @@ describe('PhoenixClient test environment', () => {
   });
 
   // Check API key
-  it.skip('should contain authorization credentials', () => {
-    should(process.env.PHOENIX_REST_API_LOGIN).be.not.empty();
+  it('should contain authorization credentials', () => {
+    should(process.env.PHOENIX_REST_API_USERNAME).be.not.empty();
     should(process.env.PHOENIX_REST_API_PASSWORD).be.not.empty();
   });
 });

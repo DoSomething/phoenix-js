@@ -25,9 +25,13 @@ module.exports = {
   getAuthrorizedClient() {
     return new PhoenixClient({
       baseURI: process.env.PHOENIX_REST_API_BASEURI,
-      login: process.env.process.env.PHOENIX_REST_API_LOGIN,
-      password: process.env.process.env.PHOENIX_REST_API_PASSWORD,
+      username: process.env.PHOENIX_REST_API_USERNAME,
+      password: process.env.PHOENIX_REST_API_PASSWORD,
     });
+  },
+
+  validSessionToken(token) {
+    token.should.be.ok().and.match(/^[a-zA-Z0-9\-\_]{43}$/);
   },
 
 };
