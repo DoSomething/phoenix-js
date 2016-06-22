@@ -16,7 +16,7 @@ const PhoenixEndpointSystem = require('../../lib/phoenix-endpoint-system');
 describe('PhoenixClient.System', () => {
   // Check System module.
   it('should be exposed', () => {
-    helper.getAuthrorizedClient()
+    helper.getAuthorizedClient()
       .should.have.property('System')
       .which.is.instanceof(PhoenixEndpointSystem);
   });
@@ -33,7 +33,7 @@ describe('PhoenixClient.System', () => {
 
   // Check that created client can perform authorized calls.
   it('getConnectionUserId() should return connection status', () => {
-    const client = helper.getAuthrorizedClient();
+    const client = helper.getAuthorizedClient();
     const response = client.System.getConnectionUserId();
     return response.should.eventually.match((userId) => {
       userId.should.be.a.Number().and.not.equal(0);

@@ -27,7 +27,7 @@ describe('PhoenixClient constructor', () => {
 
   // Test authorized instance.
   it('should create correct authorized client', () => {
-    const client = helper.getAuthrorizedClient();
+    const client = helper.getAuthorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
     client.should.have.property('session');
     return client.session.should.eventually.match(helper.validSessionData);
