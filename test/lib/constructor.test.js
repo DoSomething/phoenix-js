@@ -30,6 +30,6 @@ describe('PhoenixClient constructor', () => {
     const client = helper.getAuthrorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
     client.should.have.property('session');
-    return client.session.should.eventually.match(helper.validSessionToken);
+    return client.session.should.eventually.match(helper.validSessionData);
   });
 });
