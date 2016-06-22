@@ -33,4 +33,13 @@ describe('PhoenixClient.User', () => {
       data.should.have.properties(['formatted', 'readable']);
     });
   });
+
+  // Get reset password url.
+  it('getPasswordResetURL() should return password reset url', () => {
+    const client = helper.getAuthorizedClient();
+    // Request reset password for a test user.
+    return client.User
+      .getPasswordResetURL(helper.getTestUserId())
+      .should.eventually.match(helper.validResetPasswordUrl);
+  });
 });
