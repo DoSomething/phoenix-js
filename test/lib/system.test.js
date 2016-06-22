@@ -3,7 +3,6 @@
 /**
  * Imports.
  */
-const should = require('should');
 const helper = require('../helpers/test-helper');
 const PhoenixEndpointSystem = require('../../lib/phoenix-endpoint-system');
 
@@ -23,26 +22,21 @@ describe('PhoenixClient.System', () => {
   });
 
   // Check that created client can perform unauthorized calls.
-  it('getConnectionStatus() support unauthorized', () => {
+  it('getConnectionUserId() support unauthorized', () => {
     const client = helper.getUnauthorizedClient();
-    const response = client.System.getConnectionStatus();
-    return response.should.eventually.match((status) => {
-      status.should.have.property('user');
-      status.user.should.have.property('uid');
+    const response = client.System.getConnectionUserId();
+    return response.should.eventually.match((userId) => {
       // Check that authorized user is anonymous.
-      should(status.user.uid).be.a.Number().and.be.equal(0);
+      userId.should.be.a.Number().and.equal(0);
     });
   });
 
   // Check that created client can perform authorized calls.
-  it.skip('getConnectionStatus() should return connection status', () => {
+  it('getConnectionUserId() should return connection status', () => {
     const client = helper.getAuthrorizedClient();
-    const response = client.System.getConnectionStatus();
-    return response.should.eventually.match((status) => {
-      status.should.have.property('user');
-      status.user.should.have.property('uid');
-      // Check that authorized user is not anonymous.
-      should(status.user.uid).be.a.Number().and.be.not.equal(0);
+    const response = client.System.getConnectionUserId();
+    return response.should.eventually.match((userId) => {
+      userId.should.be.a.Number().and.not.equal(0);
     });
   });
 });
