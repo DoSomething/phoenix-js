@@ -15,19 +15,21 @@ describe('PhoenixClient constructor', () => {
     (() => new PhoenixClient()).should.throw(TypeError);
   });
 
-  // Check API base URL.
-  it('base URL option should be set', () => {
-    process.env.PHOENIX_REST_API_BASEURI.should.be.not.empty();
-  });
-
-  // Test new instance.
+  // Test new anonymous instance.
   it('should create correct unauthorized client', () => {
     const client = helper.getUnauthorizedClient();
     client.should.be.an.instanceof(PhoenixClient);
     client.should.have.property('baseURI')
       .which.is.not.empty()
-      .and.equal(process.env.PHOENIX_REST_API_BASEURI);
-    // TODO: check if authentication token isn't set.
-    // client.should.have.property('apiKey').which.is.empty();
+      .and.is.equal(process.env.PHOENIX_REST_API_BASEURI);
+    return client.session.should.eventually.be.false();
+  });
+
+  // Test authorized instance.
+  it('should create correct authorized client', () => {
+    const client = helper.getAuthrorizedClient();
+    client.should.be.an.instanceof(PhoenixClient);
+    client.should.have.property('session');
+    return client.session.should.eventually.match(helper.validSessionData);
   });
 });
