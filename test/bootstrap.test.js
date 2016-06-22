@@ -10,4 +10,5 @@ require('dotenv').config({ silent: true });
  */
 require('./lib/environment.test');
 require('./lib/constructor.test');
+require('./lib/system.test');
 require('./lib/user.test');

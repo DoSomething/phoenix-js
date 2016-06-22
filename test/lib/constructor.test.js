@@ -32,21 +32,4 @@ describe('PhoenixClient constructor', () => {
     client.should.have.property('session');
     return client.session.should.eventually.match(helper.validSessionToken);
   });
-
-  // Test authorized instance sustains connection.
-  it.skip('should sustain authorized connection', () => {
-    const client = helper.getAuthrorizedClient();
-    client.should.be.an.instanceof(PhoenixClient);
-    client.should.have.property('getConnectionStatus').which.is.a.Function();
-
-    // Check that created client can perform authorized calls.
-    const status = client.getConnectionStatus();
-    return status.should.eventually.match((response) => {
-      // Check that authorized user is not anonymous.
-      response
-        .should.have.property('user')
-        .which.has.property('uid')
-        .which.is.notEqual('0');
-    });
-  });
 });
