@@ -22,7 +22,7 @@ module.exports = {
   /**
    * Helper: get authorized client.
    */
-  getAuthrorizedClient() {
+  getAuthorizedClient() {
     return new PhoenixClient({
       baseURI: process.env.PHOENIX_REST_API_BASEURI,
       username: process.env.PHOENIX_REST_API_USERNAME,
