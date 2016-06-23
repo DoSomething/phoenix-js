@@ -1,6 +1,6 @@
 {
   "name": "@dosomething/phoenix-js",
-  "version": "0.0.1-0",
+  "version": "0.1.0-0",
   "description": "Javascript client for Phoenix, the DoSomething.org user API.",
   "engines": {
     "node": ">=4.4.x"
