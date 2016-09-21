@@ -6,11 +6,12 @@
 const helper = require('../helpers/test-helper');
 const PhoenixEndpointCampaigns = require('../../lib/phoenix-endpoint-campaigns');
 
-const testCampaignId = 1672;
-const testSource = 'phoenix-js-test';
+const client = helper.getAuthorizedClient();
+const testCampaignId = helper.getTestCampaignId();
+const testSource = helper.getTestPostSource();
 
 /**
- * Test PhoenixClient campaign calls.
+ * Test PhoenixClient campaign calls with an authorized client.
  */
 
 describe('PhoenixClient.Campaigns', () => {
@@ -21,7 +22,6 @@ describe('PhoenixClient.Campaigns', () => {
   });
 
   it('signup() returns a number', () => {
-    const client = helper.getAuthorizedClient();
     const data = {
       uid: helper.getTestUserId(),
       source: testSource,
@@ -33,7 +33,6 @@ describe('PhoenixClient.Campaigns', () => {
   });
 
   it('reportback() returns a number', () => {
-    const client = helper.getAuthorizedClient();
     const data = {
       uid: helper.getTestUserId(),
       quantity: 42,
