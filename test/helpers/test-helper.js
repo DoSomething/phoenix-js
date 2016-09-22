@@ -30,6 +30,14 @@ module.exports = {
     });
   },
 
+  getTestCampaignId() {
+    return 1672;
+  },
+
+  getTestPostSource() {
+    return 'phoenix-js-test';
+  },
+
   getTestUserId() {
     return 1700275;
   },
