@@ -21,6 +21,13 @@ describe('PhoenixClient.Campaigns', () => {
       .which.is.instanceof(PhoenixEndpointCampaigns);
   });
 
+  it('get() returns a Campaign', () => {
+    const response = client.Campaigns.get(testCampaignId);
+    return response.should.eventually.match((campaign) => {
+      campaign.id.should.be.a.Number().and.not.equal(0);
+    });
+  });
+
   it('signup() returns a number', () => {
     const data = {
       uid: helper.getTestUserId(),

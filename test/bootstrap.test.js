@@ -26,6 +26,12 @@ const phoenixSession = {
     uid: userId,
   },
 };
+const phoenixCampaign = {
+  id: campaignId,
+  title: 'Fur Your Information',
+  tagline: 'Next question',
+  status: 'active',
+};
 
 phoenixApi
   .post('/auth/login')
@@ -77,6 +83,10 @@ phoenixApi
   .post(`/campaigns/${campaignId}/reportback`)
   // Return a random number for Reportback id.
   .reply(200, [234200]);
+
+phoenixApi
+  .get(`/campaigns/${campaignId}`)
+  .reply(200, { data: phoenixCampaign });
 
 /**
  * Run tests.
