@@ -31,6 +31,12 @@ const phoenixCampaign = {
   title: 'Fur Your Information',
   tagline: 'Next question',
   status: 'active',
+  reportback_info: {
+    copy: 'I wanna know what love is',
+    confirmation_message: 'I want you to show me',
+    noun: 'interviews',
+    verb: 'conducted',
+  },
 };
 
 phoenixApi
