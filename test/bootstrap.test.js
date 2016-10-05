@@ -85,8 +85,13 @@ phoenixApi
   .reply(200, [234200]);
 
 phoenixApi
+  .get('/campaigns')
+  .reply(200, { data: [phoenixCampaign] });
+
+phoenixApi
   .get(`/campaigns/${campaignId}`)
   .reply(200, { data: phoenixCampaign });
+
 
 /**
  * Run tests.
