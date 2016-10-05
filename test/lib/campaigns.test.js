@@ -4,6 +4,7 @@
  * Imports.
  */
 const helper = require('../helpers/test-helper');
+const PhoenixCampaign = require('../../lib/phoenix-campaign');
 const PhoenixEndpointCampaigns = require('../../lib/phoenix-endpoint-campaigns');
 
 const client = helper.getAuthorizedClient();
@@ -15,10 +16,38 @@ const testSource = helper.getTestPostSource();
  */
 
 describe('PhoenixClient.Campaigns', () => {
+  /**
+   * Helper: validate campaign object.
+   */
+  function testCampaign(campaign) {
+    campaign.should.be.an.instanceof(PhoenixCampaign);
+    campaign.should.have.properties(['id', 'title', 'tagline', 'status']);
+  }
+  /**
+   * Helper: validate array of campaign objects.
+   */
+  function testCampaigns(campaigns) {
+    campaigns.should.be.an.instanceof(Array);
+    const campaign = campaigns[0];
+    campaign.should.match(testCampaign);
+  }
+
   it('should be exposed', () => {
     helper.getAuthorizedClient()
       .should.have.property('Campaigns')
       .which.is.instanceof(PhoenixEndpointCampaigns);
+  });
+
+  it('Campaigns.get() returns a Campaign', () => {
+    const response = client.Campaigns.get(testCampaignId);
+    response.should.be.a.Promise();
+    return response.should.eventually.match(testCampaign);
+  });
+
+  it('Campaigns.index() returns array of Campaigns', () => {
+    const response = client.Campaigns.index();
+    response.should.be.a.Promise();
+    return response.should.eventually.match(testCampaigns);
   });
 
   it('signup() returns a number', () => {

@@ -26,6 +26,18 @@ const phoenixSession = {
     uid: userId,
   },
 };
+const phoenixCampaign = {
+  id: campaignId,
+  title: 'Fur Your Information',
+  tagline: 'Next question',
+  status: 'active',
+  reportback_info: {
+    copy: 'I wanna know what love is',
+    confirmation_message: 'I want you to show me',
+    noun: 'interviews',
+    verb: 'conducted',
+  },
+};
 
 phoenixApi
   .post('/auth/login')
@@ -77,6 +89,15 @@ phoenixApi
   .post(`/campaigns/${campaignId}/reportback`)
   // Return a random number for Reportback id.
   .reply(200, [234200]);
+
+phoenixApi
+  .get('/campaigns')
+  .reply(200, { data: [phoenixCampaign] });
+
+phoenixApi
+  .get(`/campaigns/${campaignId}`)
+  .reply(200, { data: phoenixCampaign });
+
 
 /**
  * Run tests.
