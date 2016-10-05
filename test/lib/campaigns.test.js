@@ -38,13 +38,13 @@ describe('PhoenixClient.Campaigns', () => {
       .which.is.instanceof(PhoenixEndpointCampaigns);
   });
 
-  it('Signups.get() returns a Campaign', () => {
+  it('Campaigns.get() returns a Campaign', () => {
     const response = client.Campaigns.get(testCampaignId);
     response.should.be.a.Promise();
     return response.should.eventually.match(testCampaign);
   });
 
-  it('Signups.index() returns array of Campaigns', () => {
+  it('Campaigns.index() returns array of Campaigns', () => {
     const response = client.Campaigns.index();
     response.should.be.a.Promise();
     return response.should.eventually.match(testCampaigns);
