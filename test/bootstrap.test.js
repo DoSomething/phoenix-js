@@ -29,13 +29,17 @@ const phoenixSession = {
 const phoenixCampaign = {
   id: campaignId,
   title: 'Fur Your Information',
-  tagline: 'Next question',
+  tagline: 'Next question!',
   status: 'active',
+  type: 'campaign',
   reportback_info: {
     copy: 'I wanna know what love is',
     confirmation_message: 'I want you to show me',
     noun: 'interviews',
     verb: 'conducted',
+  },
+  facts: {
+    problem: 'Sweet child o mine',
   },
 };
 
