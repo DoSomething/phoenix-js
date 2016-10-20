@@ -41,6 +41,11 @@ const phoenixCampaign = {
   facts: {
     problem: 'Sweet child o mine',
   },
+  campaign_runs: {
+    current: {
+      en: { id: 6270 },
+    },
+  },
 };
 
 phoenixApi
