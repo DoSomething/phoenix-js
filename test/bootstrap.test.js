@@ -12,7 +12,9 @@ const nock = require('nock');
 require('dotenv').config({ silent: true });
 
 const campaignId = helper.getTestCampaignId();
+const signupId = helper.getTestSignupId();
 const userId = helper.getTestUserId();
+
 const sessionId = '2f5DO-U9tIACES3vZimgtUaN2ontgBxoyn4-Ds-Zcmg';
 const sessionName = 'SSESS2e2a742ee2c3bda949b2c6b2b81d9941';
 const token = '-XmDawHfJ3MRBFGgBvPaF4_RlHq0Dp_xfffGimzr6mM';
@@ -45,6 +47,21 @@ const phoenixCampaign = {
     current: {
       en: { id: 6270 },
     },
+  },
+};
+const phoenixSignup = {
+  id: signupId,
+  campaign: {
+    id: campaignId,
+  },
+  campaign_run: {
+    id: 7626,
+  },
+  reportback: {
+    quantity: 23,
+  },
+  user: {
+    id: userId,
   },
 };
 
@@ -107,6 +124,13 @@ phoenixApi
   .get(`/campaigns/${campaignId}`)
   .reply(200, { data: phoenixCampaign });
 
+phoenixApi
+  .get('/signups')
+  .reply(200, { data: [phoenixSignup] });
+
+phoenixApi
+  .get(`/signups/${signupId}`)
+  .reply(200, { data: phoenixSignup });
 
 /**
  * Run tests.
@@ -116,3 +140,4 @@ require('./lib/constructor.test');
 require('./lib/system.test');
 require('./lib/user.test');
 require('./lib/campaigns.test');
+require('./lib/signups.test');
