@@ -38,6 +38,10 @@ module.exports = {
     return 'phoenix-js-test';
   },
 
+  getTestSignupId() {
+    return 3081649;
+  },
+
   getTestUserId() {
     return 1700275;
   },
